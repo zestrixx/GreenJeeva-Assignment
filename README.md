@@ -16,12 +16,14 @@ Dependencies:-
   - lxml==5.2.1
   - numpy==1.26.4
   - pandas==2.2.2
+  - sumy==0.11.0
   - requests==2.31.0
+  - More can be found in the requirements.txt file
   
     - BeautifulSoup: Used for web scraping HTML and XML files.
     - Requests: Used to make HTTP requests to fetch web pages.
     - TextBlob: Used for sentiment analysis of product descriptions.
-    - Gensim: Used for keyword extraction from product descriptions.
+    - Sumy: Used for summarization of product descriptions.
 
 Approach:-
   - Web Scraping
