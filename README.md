@@ -2,12 +2,12 @@ Web Scraping and AI-Enhanced Data Enrichment
 
 Setup Instructions:-
 1. Clone this repository to your local machine.
-  - https://github.com/zestrixx/GreenJeeva-Assignment.git
+  https://github.com/zestrixx/GreenJeeva-Assignment.git
 
 2. Ensure you have Python installed. You can download it from https://www.python.org.
 
 3. Install the required Python libraries using pip:
-  - pip install -r requirements.txt
+    - pip install -r requirements.txt
 
 4. Run the Python script main.py to perform web scraping and AI-enhanced data enrichment.
 
