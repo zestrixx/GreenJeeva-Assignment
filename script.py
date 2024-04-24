@@ -1,5 +1,9 @@
 import requests
 from bs4 import BeautifulSoup
+from textblob import TextBlob
+from sumy.parsers.plaintext import PlaintextParser
+from sumy.nlp.tokenizers import Tokenizer
+from sumy.summarizers.lsa import LsaSummarizer
 
 # Function to scrape product information
 def scrape_products(web_url, product_ids:list):
@@ -37,15 +41,41 @@ def scrape_products(web_url, product_ids:list):
                             product_details = product_soup.find('div', id='contentDiv')
                             if product_details:
                                 # Find all <p> tags within product_details
-                                product_paragraphs = product_details.find_all('p')
+                                product_paragraphs = product_details.find_all('p') #type: ignore
                                 # Extract text from each <p> tag and join them into a single string
                                 product_desc = ' '.join([p.text.strip() for p in product_paragraphs])
-                                image_urls = [web_url+img['src'] for img in product_details.find_all('img')]
+                                image_urls = [web_url+img['src'] for img in product_details.find_all('img')] #type: ignore
+                                
+                                # Create a parser for the product description
+                                parser = PlaintextParser.from_string(product_desc, Tokenizer("english"))
+
+                                # Create a summarizer using LSA (Latent Semantic Analysis)
+                                summarizer = LsaSummarizer()
+                                
+                                # Performing description summarization
+                                # Summarize the product description
+                                summary = summarizer(parser.document, sentences_count=3)
+
+                                # Get the summarized text
+                                product_summary = " ".join(str(sentence) for sentence in summary)
+
+                                # Performing sentiment analysis
+                                sentiment = TextBlob(product_desc).sentiment
+                                product_sentiment = {
+                                    "polarity": sentiment.polarity, #type: ignore
+                                    "subjectivity": sentiment.subjectivity #type: ignore
+                                }
+
                                 product_info = {
-                                    'product_name': product_name,
-                                    'product_description': product_desc,
-                                    'product_image_urls': image_urls
+                                    "product_name": product_name,
+                                    "product_description": product_desc,
+                                    "product_image_urls": image_urls,
+                                    "ai_enhanced_data": {
+                                        "product_summary": product_summary,
+                                        "product_sentiment": product_sentiment
                                     }
+                                }
+
                                 product_data.append(product_info)
                             else:
                                 print(f"Product {product_name} does not have description.")

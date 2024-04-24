@@ -1,5 +1,4 @@
-import requests
-from bs4 import BeautifulSoup
+import json
 from script import scrape_products
 
 # URL of the webpage to scrape
@@ -10,4 +9,9 @@ product_ids = ["w_common_text-1570525614358", "w_common_text-1570525698742", "w_
 
 
 scraped_products = scrape_products(web_url, product_ids)
+
+# Save product data to a JSON file
+with open('product_data.json', 'w') as json_file:
+    json.dump(scraped_products, json_file, indent=4)
+
 print(scraped_products)
