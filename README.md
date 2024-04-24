@@ -34,7 +34,7 @@ Approach:-
     i) Sentiment Analysis:
       - TextBlob library is used to perform sentiment analysis on the product descriptions.
       - Sentiment analysis provides polarity and subjectivity scores for each description.
-    ii) Keyword Extraction:
-      - Gensim's TextRank algorithm is used for keyword extraction from the product descriptions.
+    ii) Summarization of Description:
+      - Sumy's nltk library generates a summary from the product descriptions.
       - Keywords represent important terms or phrases that capture the essence of the description.
       - The enriched data, including product names, descriptions, sentiment analysis results, and extracted keywords, are stored in a structured format (JSON/CSV/SQL database) as per the requirements.
