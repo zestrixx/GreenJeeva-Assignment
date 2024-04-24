@@ -24,11 +24,11 @@ Setup Instructions:-
     - Gensim: Used for keyword extraction from product descriptions.
 
 6. Approach
-  a) Web Scraping
+  - Web Scraping
     - The script uses BeautifulSoup to scrape product information from a specific webpage.
     - It targets specific <div> elements with unique IDs to extract product details such as name and description.
     - Each product description is then further enriched using AI techniques.
-  b) AI-Enhanced Data Enrichment
+  - AI-Enhanced Data Enrichment
     i) Sentiment Analysis:
       - TextBlob library is used to perform sentiment analysis on the product descriptions.
       - Sentiment analysis provides polarity and subjectivity scores for each description.
