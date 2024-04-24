@@ -11,7 +11,7 @@ Setup Instructions:-
 
 4. Run the Python script main.py to perform web scraping and AI-enhanced data enrichment.
 
-5. Dependencies
+Dependencies:-
   - beautifulsoup4==4.12.3
   - lxml==5.2.1
   - numpy==1.26.4
@@ -23,7 +23,7 @@ Setup Instructions:-
     - TextBlob: Used for sentiment analysis of product descriptions.
     - Gensim: Used for keyword extraction from product descriptions.
 
-6. Approach
+Approach:-
   - Web Scraping
     - The script uses BeautifulSoup to scrape product information from a specific webpage.
     - It targets specific <div> elements with unique IDs to extract product details such as name and description.
